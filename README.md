@@ -1,7 +1,7 @@
 # 2D-Game
 
 Name : Anshul Bahukhandi
-Date : 1/21/2016
+ Date : 1/21/2016
 - PROJECT UNDER PROGRESS
 
 - This project is a 2D Game that will be made using SDL2.0 and C++ 
