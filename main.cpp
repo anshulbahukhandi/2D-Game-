@@ -10,13 +10,15 @@ int main( int argc  , char* argv[])
 	
 	game* newGame = new game ; 
 	
-	if( newGame->init((char*)"Main Window" , SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED , 640 , 400 , SDL_WINDOW_SHOWN))
+	if( newGame->init((char*)"Main Window" , 0 , 0 , 640 , 400 ,0))
 	{
 		while(newGame->ifRunning())
-		newGame->render(0 ,0,0,255);
-
+		{
+			newGame->process();
+			newGame->render(0,0,0,255);
+			newGame->handleEvent();
+		}
 	}
 
-
-	return 0 ;
+return 0 ;
 }

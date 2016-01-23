@@ -12,13 +12,17 @@ game::~game()
 }
 
 /*function has the responsibility to initialize the window and renderer*/
-/* We can also try to do the same stuuff inside constructor */
-bool  game::init( char* title, int xpos, int ypos, int height, int width, int flag)
+/* We can also try to do the same stuff inside constructor */
+bool  game::init( char* title, int xpos, int ypos, int height, int width, bool fullscreen)
 {
 	if( SDL_Init(SDL_INIT_EVERYTHING)>= 0) 
 	{
-	/*Creating window , last flag is window flag*/
-		mpWindow=SDL_CreateWindow( title , xpos , ypos , height , width , flag);
+	/*Creating window*/
+		int full; 
+		if(fullscreen==true)
+			full=1;
+		else full=0;
+		mpWindow=SDL_CreateWindow( title , xpos , ypos , height , width , full);
 		/* If window is created  , create the renderer*/
 		if( mpWindow!=0)
 		{
@@ -29,7 +33,6 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, int fl
 				cout<<"Failed to create the renderer!\n";
 				return false;
 			}	
-
 		} 
 		else 
 		{
@@ -41,6 +44,12 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, int fl
 	{
 		cout<<"Failed to initialize SDL!\n";
 		return false ;
+	}
+
+	/*Loading the texture in our texture array*/
+	if(!textureConfig::getInstance().load("images/cat.bmp" ,"cat" , mpRenderer))
+	{	cout<<"IMAGE LOADING FAILED!\n";
+		return false; 
 	}
 
 	mIfRunning=true;
@@ -56,6 +65,10 @@ void game::render(int red, int blue , int green , int alpha)
 	/* Clear the colors from the renderer*/
 	SDL_RenderClear(mpRenderer);
 
+	/*Render the texture*/
+	textureConfig::getInstance().drawAnimated("cat" ,0 , 0 , 128, 82 ,1, mCurrentFrame,mpRenderer,SDL_FLIP_NONE);
+
+	textureConfig::getInstance().drawStatic("cat" ,200 , 0 , 128, 82 ,mpRenderer,SDL_FLIP_NONE);
 	/* Display the renderer*/
 	SDL_RenderPresent(mpRenderer);
 }
@@ -63,13 +76,24 @@ void game::render(int red, int blue , int green , int alpha)
 /*function to handle events/ inputs*/
 void game::handleEvent()
 {
+	SDL_Event event; 
+	if(SDL_PollEvent(&event))
+	{
+		switch(event.type)
+		{
+			case SDL_QUIT : 
+			mIfRunning=false;
+			break;
 
+			default : break;	
+		}	
+	}
 }
 
 /*function to process the inputs and apply the physics*/
 void game::process()
 {
-
+	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
 }
 
 /*function to handle the cleanups*/

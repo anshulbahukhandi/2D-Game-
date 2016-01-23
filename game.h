@@ -6,6 +6,8 @@
 #define GAME_H_
 
 #include"SDL.h"
+#include"SDL_image.h"
+#include"texture.cpp"
 #include<iostream>
 #include<fstream>
 class game
@@ -15,8 +17,9 @@ public:
 game();
 ~game();
 /*function has the responsibility to initialize the window and renderer*/
-/* We can also try to do the same stuuff inside constructor */
-bool  init( char*, int, int, int, int, int);
+/* We can also try to do the same stuff inside constructor */
+/*Last argument is whether we want full screen or not*/
+bool  init( char*, int, int, int, int, bool);
 
 /*function has the responsibility of creating a renderer and rendering */
 void render(int , int , int , int);
@@ -40,7 +43,8 @@ bool ifRunning ()
 private: 
 SDL_Window* mpWindow;
 SDL_Renderer * mpRenderer;
-bool mIfRunning;
+bool mIfRunning; 
+int mCurrentFrame;
 
 };
 
