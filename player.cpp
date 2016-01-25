@@ -16,7 +16,7 @@ void player::draw(SDL_Renderer* renderer)
 void player::process()
 {
 	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
-	mX+=2;
+	mX+=1;
 }
 
 void player::clean()

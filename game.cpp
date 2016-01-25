@@ -52,9 +52,28 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, bool f
 		return false; 
 	}
 
-	/* Loading game object and player */
-	mpGo.load(200,0,128,82,"cat");
-	mpPlayer.load(200,100,128,82,"cat");
+	/* Initializing enemies and players */
+	mpPlayer = new player();
+	mpEnemy1 = new enemy();
+	mpEnemy2 = new enemy();
+	mpEnemy3 = new enemy();
+
+	/* Loading Enemy and player */
+	mpPlayer->load(200,0,128,82,"cat");
+	mpEnemy1->load(200,100,128,82,"cat");
+	mpEnemy2->load(200,200,128,82,"cat");
+	mpEnemy3->load(200,300,128,82,"cat");
+
+	
+	mObjectArray.push_back(mpPlayer);
+	mObjectArray.push_back(mpEnemy1);
+	mObjectArray.push_back(mpEnemy2);
+	mObjectArray.push_back(mpEnemy3);
+
+
+
+
+
 	mIfRunning=true;
 	return true; 
 }
@@ -69,8 +88,10 @@ void game::render(int red, int blue , int green , int alpha)
 	SDL_RenderClear(mpRenderer);
 
 	/*Render the texture*/
-	mpGo.draw(mpRenderer);
-	mpPlayer.draw(mpRenderer);
+	for( int i= 0 ; i<mObjectArray.size();i++ )
+	{
+		mObjectArray[i]->draw(mpRenderer);
+	}
 	/* Display the renderer*/
 	SDL_RenderPresent(mpRenderer);
 }
@@ -95,8 +116,10 @@ void game::handleEvent()
 /*function to process the inputs and apply the physics*/
 void game::process()
 {
-	mpGo.process();
-	mpPlayer.process();
+	for( int i= 0 ; i<mObjectArray.size();i++ )
+	{
+		mObjectArray[i]->process();
+	}
 }
 
 /*function to handle the cleanups*/

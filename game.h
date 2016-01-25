@@ -12,7 +12,10 @@
 #include<fstream>
 #include"gameobject.h"
 #include"player.cpp"
+#include"enemy.cpp"
+#include<vector>
 
+   
 class game
 {
 	
@@ -49,8 +52,11 @@ SDL_Renderer * mpRenderer;
 bool mIfRunning; 
 int mCurrentFrame;
 
-gameobject mpGo; 
-player mpPlayer;
+std::vector<gameobject*> mObjectArray;
+gameobject* mpPlayer; 
+gameobject* mpEnemy1;
+gameobject* mpEnemy2;
+gameobject* mpEnemy3;
 
 };
 
