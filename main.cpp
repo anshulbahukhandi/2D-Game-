@@ -17,6 +17,7 @@ int main( int argc  , char* argv[])
 			newGame->process();
 			newGame->render(0,0,0,255);
 			newGame->handleEvent();
+			SDL_Delay(10);
 		}
 	}
 

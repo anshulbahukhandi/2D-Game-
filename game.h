@@ -10,6 +10,9 @@
 #include"texture.cpp"
 #include<iostream>
 #include<fstream>
+#include"gameobject.h"
+#include"player.cpp"
+
 class game
 {
 	
@@ -45,6 +48,9 @@ SDL_Window* mpWindow;
 SDL_Renderer * mpRenderer;
 bool mIfRunning; 
 int mCurrentFrame;
+
+gameobject mpGo; 
+player mpPlayer;
 
 };
 

@@ -34,13 +34,15 @@ bool drawStatic(std::string ,int  , int , int , int , SDL_Renderer* , SDL_Render
 bool drawAnimated(std::string ,int  , int , int , int ,int , int , SDL_Renderer* , SDL_RendererFlip );
 
 /*Function to access the only object of this class*/
-static textureConfig& getInstance()
+static textureConfig* getInstance()
 {
+	if(mpTexture==NULL)
+		mpTexture=new textureConfig();
 	return mpTexture;
 }
 
 private:
-static textureConfig mpTexture;
+static textureConfig* mpTexture;
 /* All textures will be stored in this map */
 std::map<std::string , SDL_Texture*>	mTextureArray;
 textureConfig(){}

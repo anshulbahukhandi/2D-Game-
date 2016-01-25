@@ -1,7 +1,7 @@
 #include"texture.h"
 using namespace std; 
 
-textureConfig textureConfig::mpTexture;
+textureConfig* textureConfig::mpTexture=NULL;
 /*Function will load image by making it texture structure*/
 bool textureConfig::load ( std::string imagename , std::string id  , SDL_Renderer* renderer)
 {

@@ -47,11 +47,14 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, bool f
 	}
 
 	/*Loading the texture in our texture array*/
-	if(!textureConfig::getInstance().load("images/cat.bmp" ,"cat" , mpRenderer))
+	if(!textureConfig::getInstance()->load("images/cat.bmp" ,"cat" , mpRenderer))
 	{	cout<<"IMAGE LOADING FAILED!\n";
 		return false; 
 	}
 
+	/* Loading game object and player */
+	mpGo.load(200,0,128,82,"cat");
+	mpPlayer.load(200,100,128,82,"cat");
 	mIfRunning=true;
 	return true; 
 }
@@ -66,9 +69,8 @@ void game::render(int red, int blue , int green , int alpha)
 	SDL_RenderClear(mpRenderer);
 
 	/*Render the texture*/
-	textureConfig::getInstance().drawAnimated("cat" ,0 , 0 , 128, 82 ,1, mCurrentFrame,mpRenderer,SDL_FLIP_NONE);
-
-	textureConfig::getInstance().drawStatic("cat" ,200 , 0 , 128, 82 ,mpRenderer,SDL_FLIP_NONE);
+	mpGo.draw(mpRenderer);
+	mpPlayer.draw(mpRenderer);
 	/* Display the renderer*/
 	SDL_RenderPresent(mpRenderer);
 }
@@ -93,7 +95,8 @@ void game::handleEvent()
 /*function to process the inputs and apply the physics*/
 void game::process()
 {
-	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
+	mpGo.process();
+	mpPlayer.process();
 }
 
 /*function to handle the cleanups*/
