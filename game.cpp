@@ -1,6 +1,7 @@
 #include"game.h"
 using namespace std; 
 
+game* game::mpGame=NULL;
 game::game()
 {
 	cout<<"Game Object Created.\n";
@@ -53,26 +54,11 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, bool f
 	}
 
 	/* Initializing enemies and players */
-	mpPlayer = new player();
-	mpEnemy1 = new enemy();
-	mpEnemy2 = new enemy();
-	mpEnemy3 = new enemy();
 
-	/* Loading Enemy and player */
-	mpPlayer->load(200,0,128,82,"cat");
-	mpEnemy1->load(200,100,128,82,"cat");
-	mpEnemy2->load(200,200,128,82,"cat");
-	mpEnemy3->load(200,300,128,82,"cat");
-
-	
-	mObjectArray.push_back(mpPlayer);
-	mObjectArray.push_back(mpEnemy1);
-	mObjectArray.push_back(mpEnemy2);
-	mObjectArray.push_back(mpEnemy3);
-
-
-
-
+	mObjectArray.push_back(new player(new parameter(200,0,128,82,"cat")));
+	mObjectArray.push_back(new enemy(new parameter(200,100,128,82,"cat")));
+	mObjectArray.push_back(new enemy(new parameter(200,200,128,82,"cat")));
+	mObjectArray.push_back(new enemy(new parameter(200,300,128,82,"cat")));
 
 	mIfRunning=true;
 	return true; 

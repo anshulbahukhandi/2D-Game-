@@ -13,6 +13,7 @@
 #include"gameobject.h"
 #include"player.cpp"
 #include"enemy.cpp"
+   #include"parameter.h"
 #include<vector>
 
    
@@ -20,7 +21,7 @@ class game
 {
 	
 public:
-game();
+
 ~game();
 /*function has the responsibility to initialize the window and renderer*/
 /* We can also try to do the same stuff inside constructor */
@@ -46,17 +47,27 @@ bool ifRunning ()
 	return mIfRunning;
 }
 
+/*function to get the only game object pointer allowed*/
+static game* getInstance()
+{
+	if(mpGame==NULL)
+		mpGame=new game();
+		return mpGame;
+}
 private: 
+static game* mpGame;
+
 SDL_Window* mpWindow;
 SDL_Renderer * mpRenderer;
 bool mIfRunning; 
 int mCurrentFrame;
 
 std::vector<gameobject*> mObjectArray;
-gameobject* mpPlayer; 
-gameobject* mpEnemy1;
-gameobject* mpEnemy2;
-gameobject* mpEnemy3;
+
+/* No creation or copying or assigning of game objects allowed*/
+game();
+game(const game&);
+game& operator=(const  game&);
 
 };
 

@@ -6,17 +6,15 @@ using namespace std;
 int main( int argc  , char* argv[])
 {
 	/* Always create on heap  , because its dificult for the compiler to know the exact size
-	   as its very complicated to be place don stack*/
+	   as its very complicated to be place don stack*/ 
 	
-	game* newGame = new game ; 
-	
-	if( newGame->init((char*)"Main Window" , 0 , 0 , 640 , 400 ,0))
+	if( game::getInstance()->init((char*)"Main Window" , 0 , 0 , 640 , 400 ,0))
 	{
-		while(newGame->ifRunning())
+		while(game::getInstance()->ifRunning())
 		{
-			newGame->process();
-			newGame->render(0,0,0,255);
-			newGame->handleEvent();
+			game::getInstance()->process();
+			game::getInstance()->render(0,0,0,255);
+			game::getInstance()->handleEvent();
 			SDL_Delay(10);
 		}
 	}

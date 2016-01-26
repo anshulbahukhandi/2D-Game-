@@ -6,35 +6,39 @@
 #include"SDL.h"
 #include"SDL_image.h"
 #include"texture.h"
+#include"parameter.h"
+#include"game.h"
+
 
 class gameobject
 {
 	
 public:
-void load(int x , int y , int width , int height , std::string id)
+gameobject(const parameter* para)
 {
- mX=x;
- mY=y;
+ mX=para->getX();
+ mY=para->getY();
  mCurrentFrame=1;
  mCurrentRow=1;
- mWidth=width;
- mHeight=height;
- mTextureId=id;
+ mWidth=para->getWidth();
+ mHeight=para->getHeight();
+ mTextureId=para->getId();
 }
 
-void draw(SDL_Renderer* renderer) 
+virtual ~gameobject(){}
+
+virtual void draw(SDL_Renderer* renderer) 
 { 
 	textureConfig::getInstance()->drawAnimated(mTextureId , mX , mY , mWidth , mHeight ,
 										       mCurrentRow ,mCurrentFrame,renderer);
 }
 
-void process() 
+virtual void process() 
 { 
 	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
-	mX+=1;
 }
 
-void clean() 
+virtual void clean() 
 {
 
 }

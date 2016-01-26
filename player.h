@@ -2,20 +2,21 @@
 #define PLAYER_H_
 
 
-#include"gameobject.h"
+
 #include"SDL.h"
 #include"SDL_image.h"
-
+#include"parameter.h"
+#include"gameobject.h"
 
 class player : public gameobject
 {
 
 public:
-
-void load(int, int , int , int , std::string );
-void draw(SDL_Renderer*) ;
-void process();
-void clean() ;
+player(const parameter*);
+virtual ~player();
+virtual void draw(SDL_Renderer*) ;
+virtual void process();
+virtual void clean() ;
 
 };
 

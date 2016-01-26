@@ -2,10 +2,9 @@
 using namespace std;
 
 
-void enemy::load(int x , int y , int width , int height , std::string id)
-{
-	gameobject::load(x,y,width , height , id);
-}
+enemy::enemy(const parameter* para) : gameobject(para){}
+
+enemy::~enemy() {}
 
 void enemy::draw(SDL_Renderer* renderer)
 {
@@ -14,7 +13,7 @@ void enemy::draw(SDL_Renderer* renderer)
 
 void enemy::process()
 {
-	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
+	gameobject::process();
 	mX-=1;
 }
 

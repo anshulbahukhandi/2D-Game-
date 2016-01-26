@@ -3,10 +3,9 @@ using namespace std;
 
 
 
-void player::load(int x , int y , int width , int height , std::string id)
-{
-	gameobject::load(x,y,width , height , id);
-}
+player::player(const parameter* para) :gameobject(para) {}
+
+player::~player() {}
 
 void player::draw(SDL_Renderer* renderer)
 {
@@ -15,7 +14,7 @@ void player::draw(SDL_Renderer* renderer)
 
 void player::process()
 {
-	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
+	gameobject::process();
 	mX+=1;
 }
 

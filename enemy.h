@@ -1,14 +1,17 @@
 #ifndef ENEMY_H_
 #define ENEMY_H_
 
+#include"parameter.h"
 class enemy : public gameobject
 {
 
 public:
-void load(int, int , int , int , std::string );
-void draw(SDL_Renderer*) ;
-void process();
-void clean() ;
+
+enemy(const parameter*);
+virtual ~enemy();
+virtual void draw(SDL_Renderer*) ;
+virtual void process();
+virtual void clean() ;
 
 };
 
