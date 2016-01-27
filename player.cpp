@@ -14,8 +14,10 @@ void player::draw(SDL_Renderer* renderer)
 
 void player::process()
 {
+	
+	mAcceleration.setX(0.1);
 	gameobject::process();
-	mX+=1;
+
 }
 
 void player::clean()

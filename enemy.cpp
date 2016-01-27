@@ -14,7 +14,7 @@ void enemy::draw(SDL_Renderer* renderer)
 void enemy::process()
 {
 	gameobject::process();
-	mX-=1;
+	mPosition.setX(mPosition.getX() -1);
 }
 
 void enemy::clean()

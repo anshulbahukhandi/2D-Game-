@@ -7,7 +7,7 @@
 #include"SDL_image.h"
 #include"parameter.h"
 #include"gameobject.h"
-
+#include"vector.cpp"
 class player : public gameobject
 {
 

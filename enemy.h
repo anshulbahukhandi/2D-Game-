@@ -2,6 +2,8 @@
 #define ENEMY_H_
 
 #include"parameter.h"
+//#include"vector.h"
+
 class enemy : public gameobject
 {
 
