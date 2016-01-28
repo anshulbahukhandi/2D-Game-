@@ -18,7 +18,6 @@ int main( int argc  , char* argv[])
 			game::getInstance()->process();
 			game::getInstance()->render(0,0,0,255);
 			game::getInstance()->handleEvent();
-			SDL_Delay(10);
 
 			frameTime=SDL_GetTicks() - frameStart;
 			if(frameTime<timeBetweenFrames)

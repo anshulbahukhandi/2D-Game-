@@ -13,10 +13,10 @@
 #include"gameobject.h"
 #include"player.cpp"
 #include"enemy.cpp"
-   #include"parameter.h"
+#include"parameter.h"
 #include<vector>
+#include"input.cpp"
 
-   
 class game
 {
 	
@@ -54,6 +54,7 @@ static game* getInstance()
 		mpGame=new game();
 		return mpGame;
 }
+
 private: 
 static game* mpGame;
 

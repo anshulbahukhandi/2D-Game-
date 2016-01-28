@@ -8,6 +8,9 @@
 #include"parameter.h"
 #include"gameobject.h"
 #include"vector.cpp"
+#include"input.h"
+#include<iostream>
+
 class player : public gameobject
 {
 

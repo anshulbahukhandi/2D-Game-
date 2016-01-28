@@ -14,8 +14,14 @@ void player::draw(SDL_Renderer* renderer)
 
 void player::process()
 {
-	
-	mAcceleration.setX(0.1);
+	if(input::getInstance()->getMouseButtonState(LEFT))
+		{
+			mVelocity.setX(1);
+			mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
+			cout<<"Inside player::process()\n change velocity\n";
+		}
+		else
+			mVelocity.setX(0);
 	gameobject::process();
 
 }

@@ -13,8 +13,17 @@ void enemy::draw(SDL_Renderer* renderer)
 
 void enemy::process()
 {
+	if(input::getInstance()->getMouseButtonState(RIGHT))
+		{
+			mVelocity.setX(1);
+			mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
+			cout<<"Inside player::process()\n change velocity\n";
+		}
+		else
+			mVelocity.setX(0);
 	gameobject::process();
-	mPosition.setX(mPosition.getX() -1);
+
+	
 }
 
 void enemy::clean()

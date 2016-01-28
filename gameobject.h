@@ -33,12 +33,9 @@ virtual void draw(SDL_Renderer* renderer)
 
 virtual void process() 
 { 
-	mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
+	
 	mVelocity=mVelocity+mAcceleration;
 	mPosition=mPosition+mVelocity;
-
-
-
 }
 
 virtual void clean() 

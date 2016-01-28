@@ -85,18 +85,20 @@ void game::render(int red, int blue , int green , int alpha)
 /*function to handle events/ inputs*/
 void game::handleEvent()
 {
-	SDL_Event event; 
-	if(SDL_PollEvent(&event))
-	{
-		switch(event.type)
-		{
-			case SDL_QUIT : 
-			mIfRunning=false;
-			break;
-
-			default : break;	
-		}	
-	}
+	 SDL_Event event; 
+	 if(SDL_PollEvent(&event))
+	 {
+	 	if(event.type ==SDL_QUIT)
+	 		{
+	 			cout<<"event.type==SDL_QUIT\n";
+	 			mIfRunning=false;
+	 		}
+	 	else 
+	 	{
+	 		cout<<"Inside Else\n";
+	 		input::getInstance()->process(event);
+	 	}
+	 }
 }
 
 /*function to process the inputs and apply the physics*/
