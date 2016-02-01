@@ -16,9 +16,11 @@ void player::process()
 {
 	if(input::getInstance()->getMouseButtonState(LEFT))
 		{
-			mVelocity.setX(1);
+			
 			mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
-			cout<<"Inside player::process()\n change velocity\n";
+			myvector* temp = new myvector ; 
+			temp = input::getInstance()->getMousePosition();
+			mVelocity=(*temp-mPosition)/75;
 		}
 		else
 			mVelocity.setX(0);

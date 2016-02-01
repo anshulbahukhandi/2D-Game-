@@ -39,6 +39,12 @@ void input::process(SDL_Event event)
 				mArrayMouseButtonState[RIGHT] =false;
 
 		}
+
+		if(event.type==SDL_MOUSEMOTION)
+		{
+			mpMousePosition->setX(event.motion.x);
+			mpMousePosition->setY(event.motion.y);
+		}
 }
 
 void input::clean()
@@ -50,5 +56,23 @@ bool input::getMouseButtonState(const int  n)
 {
 	return (mArrayMouseButtonState[n]);
 }
+
+bool input::getKeyState(SDL_Scancode key)
+{
+	if(mpKeyState!=NULL)
+	{
+	if(mpKeyState[key]==1)
+		return true; 
+	else
+		return false;
+	}
+	else 
+	{
+		cout<<"Failed to get the keyState pointer!!\n";
+		return false;
+	} 
+}
+
+
 
 

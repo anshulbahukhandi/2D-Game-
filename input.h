@@ -12,7 +12,7 @@
 
 #include"SDL.h"
 #include<vector>
-   
+#include"myvector.h"
 
 enum MOUSEBUTTON
 {
@@ -40,6 +40,16 @@ void clean();
 /*Function to get the state of mouse button*/
 bool getMouseButtonState(const int );
 
+/*Function to get the position of mouse totrack its motion*/
+myvector* getMousePosition()
+{
+	return mpMousePosition;
+}
+
+/*Function to return the state of any key*/
+
+bool getKeyState(SDL_Scancode key);
+
 private:
 /*Disallowing constructor , assignment operator and copy constructor*/	
 
@@ -57,10 +67,15 @@ static input* mpInput;
 /*There is no point in inheriting mouse and keyboard class from this 
   class and pay extra overhead when we can get away easily by composition.
 */
+ 
  /*Array to record the 3 button events , one from each button*/
  std::vector<bool> mArrayMouseButtonState;
 
-
+/*Pointer to store the position of the mouse to track its motion*/
+ myvector* mpMousePosition;
+ 
+/*Array to record the state of each key on the keyboard*/
+const Uint8* mpKeyState = SDL_GetKeyboardState(0);
 
 };
 

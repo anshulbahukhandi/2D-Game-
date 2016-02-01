@@ -90,14 +90,14 @@ void game::handleEvent()
 	 {
 	 	if(event.type ==SDL_QUIT)
 	 		{
-	 			cout<<"event.type==SDL_QUIT\n";
 	 			mIfRunning=false;
 	 		}
 	 	else 
-	 	{
-	 		cout<<"Inside Else\n";
-	 		input::getInstance()->process(event);
-	 	}
+	 		{
+	 			/* Another way if we dont want to pass the SDL_Event arg is 
+	 			   using friend func to directly access the member data in input header*/
+	 			input::getInstance()->process(event);
+	 		}
 	 }
 }
 

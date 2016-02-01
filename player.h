@@ -7,7 +7,7 @@
 #include"SDL_image.h"
 #include"parameter.h"
 #include"gameobject.h"
-#include"vector.cpp"
+#include"myvector.cpp"
 #include"input.h"
 #include<iostream>
 
@@ -20,6 +20,9 @@ virtual ~player();
 virtual void draw(SDL_Renderer*) ;
 virtual void process();
 virtual void clean() ;
+
+private:
+ 
 
 };
 

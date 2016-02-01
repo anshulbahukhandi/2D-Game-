@@ -8,7 +8,7 @@
 #include"texture.h"
 #include"parameter.h"
 #include"game.h"
-#include"vector.h"
+#include"myvector.h"
 
 class gameobject
 {
@@ -44,9 +44,9 @@ virtual void clean()
 }
 
 protected:
-vector mPosition;
-vector mVelocity;
-vector mAcceleration;
+myvector mPosition;
+myvector mVelocity;
+myvector mAcceleration;
 int mCurrentFrame;
 int mCurrentRow;
 int mWidth;
