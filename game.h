@@ -5,17 +5,22 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include<iostream>
+#include<fstream>
+#include<vector>
 #include"SDL.h"
 #include"SDL_image.h"
 #include"texture.cpp"
-#include<iostream>
-#include<fstream>
 #include"gameobject.h"
 #include"player.cpp"
 #include"enemy.cpp"
 #include"parameter.h"
-#include<vector>
 #include"input.cpp"
+#include"getstate.cpp"
+#include"gamestate.h"
+#include"play.cpp"
+#include"menu.cpp"
+
 
 class game
 {
@@ -64,6 +69,9 @@ bool mIfRunning;
 int mCurrentFrame;
 
 std::vector<gameobject*> mObjectArray;
+
+/*This object is used to change the states of game*/
+getstate* mpStateChanger;
 
 /* No creation or copying or assigning of game objects allowed*/
 game();

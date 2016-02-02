@@ -54,11 +54,15 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, bool f
 	}
 
 	/* Initializing enemies and players */
-
 	mObjectArray.push_back(new player(new parameter(200,0,128,82,"cat")));
 	mObjectArray.push_back(new enemy(new parameter(200,100,128,82,"cat")));
 	mObjectArray.push_back(new enemy(new parameter(200,200,128,82,"cat")));
 	mObjectArray.push_back(new enemy(new parameter(200,300,128,82,"cat")));
+
+	/*Add our first state*/
+	mpStateChanger=new getstate();
+	mpStateChanger->addOneRemoveOther(new menu());
+
 
 	mIfRunning=true;
 	return true; 
@@ -92,7 +96,11 @@ void game::handleEvent()
 	 		{
 	 			mIfRunning=false;
 	 		}
-	 	else 
+	 	else if (input::getInstance()->getKeyState(SDL_SCANCODE_RETURN))
+	 		{
+	 			mpStateChanger->addOneRemoveOther(new play());
+	 		}
+	 	else	
 	 		{
 	 			/* Another way if we dont want to pass the SDL_Event arg is 
 	 			   using friend func to directly access the member data in input header*/
