@@ -68,24 +68,6 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, bool f
 	return true; 
 }
 
-/*function has the responsibility of creating a renderer and rendering */
-void game::render(int red, int blue , int green , int alpha)
-{
-	/*Fill the colors in the renderer */
-	SDL_SetRenderDrawColor(mpRenderer, red , blue , green , alpha);
-	
-	/* Clear the colors from the renderer*/
-	SDL_RenderClear(mpRenderer);
-
-	/*Render the texture*/
-	for( int i= 0 ; i<mObjectArray.size();i++ )
-	{
-		mObjectArray[i]->draw(mpRenderer);
-	}
-	/* Display the renderer*/
-	SDL_RenderPresent(mpRenderer);
-}
-
 /*function to handle events/ inputs*/
 void game::handleEvent()
 {
@@ -109,13 +91,25 @@ void game::handleEvent()
 	 }
 }
 
+/*function has the responsibility of creating a renderer and rendering */
+void game::render(int red, int blue , int green , int alpha)
+{
+	/*Fill the colors in the renderer */
+	SDL_SetRenderDrawColor(mpRenderer, red , blue , green , alpha);
+	
+	/* Clear the colors from the renderer*/
+	SDL_RenderClear(mpRenderer);
+
+	/*Render the texture*/
+	mpStateChanger->render();
+	/* Display the renderer*/
+	SDL_RenderPresent(mpRenderer);
+}
+
 /*function to process the inputs and apply the physics*/
 void game::process()
 {
-	for( int i= 0 ; i<mObjectArray.size();i++ )
-	{
-		mObjectArray[i]->process();
-	}
+	mpStateChanger->process();
 }
 
 /*function to handle the cleanups*/
