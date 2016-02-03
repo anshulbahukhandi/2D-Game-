@@ -3,6 +3,17 @@ using namespace std;
 
 const std::string menu::mId="MENU";
 
+void menu::mPlayFunction()
+{
+	cout<<"Play function called\n";
+}
+
+void menu::mExitFunction()
+{
+	cout<<"exit function called\n";
+	game::getInstance()->quit();
+}
+
  void menu::process()
  {
  	for( int i=0 ; i<mArrayGameObject.size(); i++)
@@ -32,8 +43,8 @@ const std::string menu::mId="MENU";
  		return false;
  	}
 
- 	gameobject* playButton=new menubutton(new parameter(100,100,400,100,"playbutton"));
- 	gameobject* exitButton=new menubutton(new parameter(100,300,400,100,"exitbutton"));
+ 	gameobject* playButton=new menubutton(new parameter(100,100,400,100,"playbutton") , mPlayFunction);
+ 	gameobject* exitButton=new menubutton(new parameter(100,300,400,100,"exitbutton") , mExitFunction);
 
  	mArrayGameObject.push_back(playButton);
  	mArrayGameObject.push_back(exitButton);

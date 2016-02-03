@@ -60,6 +60,11 @@ static game* getInstance()
 		return mpGame;
 }
 
+void quit()
+{
+	mIfRunning=false;
+}
+
 private: 
 static game* mpGame;
 

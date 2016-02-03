@@ -8,11 +8,12 @@
 #include"myvector.h"
 #include"input.h"
 #include<iostream>
+
 class menubutton : public gameobject
 {
 public:
 	
-	menubutton(const parameter*);
+	menubutton(const parameter* , void (*callback)());
 	virtual ~menubutton();
 	virtual void draw(SDL_Renderer*);
 	virtual void process();
@@ -27,6 +28,11 @@ private:
 	  	MOUSEOVER=1,
 	  	MOUSECLICKED=2
 	  };
+
+	/*Every menu button has a function pointer that it will call once pressed*/
+	void (*mCallBack)();
+	/*variable to see if button realesed or not*/
+	bool  mButtonRealesed;
 
 };
 
