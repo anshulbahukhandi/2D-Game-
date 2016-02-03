@@ -24,7 +24,7 @@ void player::process()
 		}
 		else
 			mVelocity.setX(0);
-	gameobject::process();
+	gameobject::process();	
 
 }
 

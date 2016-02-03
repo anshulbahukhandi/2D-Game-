@@ -7,6 +7,7 @@ input::input()
 {
 	for (int i= 0 ; i<3 ; i++)
 		mArrayMouseButtonState.push_back(false);
+		mpMousePosition=new myvector();
 }
 
 input::~input()
@@ -14,7 +15,7 @@ input::~input()
 
 }
 
-void input::process(SDL_Event event)
+void input::process(const SDL_Event event)
 {
 		/*If mouse button is pressed down*/
 		if(event.type==SDL_MOUSEBUTTONDOWN)

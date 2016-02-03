@@ -7,6 +7,7 @@
 #include"gameobject.h"
 #include"myvector.cpp"
 #include"input.h"
+#include<iostream>
 class menubutton : public gameobject
 {
 public:

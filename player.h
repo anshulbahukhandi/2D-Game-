@@ -15,6 +15,7 @@ class player : public gameobject
 {
 
 public:
+	
 player(const parameter*);
 virtual ~player();
 virtual void draw(SDL_Renderer*) ;

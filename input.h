@@ -11,9 +11,10 @@
 #define INPUT_H_
 
 #include"SDL.h"
-#include<vector>
 #include"myvector.h"
-
+#include<vector>
+#include<iostream>
+   
 enum MOUSEBUTTON
 {
 	LEFT=0 , MIDDLE=1 , RIGHT=2
@@ -33,7 +34,7 @@ static input* getInstance()
 	return mpInput;
 }
 
-void  process(SDL_Event);
+void  process(const SDL_Event);
 
 void clean();
 
