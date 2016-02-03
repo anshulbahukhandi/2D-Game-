@@ -1,7 +1,7 @@
 #ifndef GAME_OBJECT_H_
 #define GAME_OBJECT_H_
 
-
+#include<iostream>
 #include<string>
 #include"SDL.h"
 #include"SDL_image.h"

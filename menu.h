@@ -7,7 +7,8 @@
 #include<string>
 #include<vector>
 #include"SDL.h"
-
+#include"parameter.h"
+#include"menubutton.cpp"
 class menu : public gamestate
 {
 

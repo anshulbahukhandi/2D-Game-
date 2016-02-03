@@ -5,7 +5,7 @@
 #include"parameter.h"
 #include"SDL.h"
 #include"gameobject.h"
-#include"myvector.cpp"
+#include"myvector.h"
 #include"input.h"
 #include<iostream>
 class menubutton : public gameobject
@@ -13,7 +13,7 @@ class menubutton : public gameobject
 public:
 	
 	menubutton(const parameter*);
-	virtual ~menubuttonn();
+	virtual ~menubutton();
 	virtual void draw(SDL_Renderer*);
 	virtual void process();
 	virtual void clean();

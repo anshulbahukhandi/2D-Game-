@@ -1,6 +1,6 @@
 #include"game.cpp"
 #include<iostream>
-#include<fstream>
+
 using namespace std; 
 
 int main( int argc  , char* argv[])
@@ -15,8 +15,9 @@ int main( int argc  , char* argv[])
 		while(game::getInstance()->ifRunning())
 		{
 			frameStart=SDL_GetTicks();
-			game::getInstance()->process();
+			
 			game::getInstance()->render(0,0,0,255);
+			game::getInstance()->process();
 			game::getInstance()->handleEvent();
 
 			frameTime=SDL_GetTicks() - frameStart;

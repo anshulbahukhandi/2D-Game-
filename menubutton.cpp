@@ -30,7 +30,7 @@ void menubutton::process()
 	{
 		mCurrentFrame=MOUSEOVER;
 		if(input::getInstance()->getMouseButtonState(LEFT))
-			mCurrentFrame=CLICKED;
+			mCurrentFrame=MOUSECLICKED;
 	}
 	else 
 		mCurrentFrame=MOUSEOUT;
