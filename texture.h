@@ -41,7 +41,14 @@ static textureConfig* getInstance()
 	return mpTexture;
 }
 
+/*Function to erase a texture from the map*/
+void eraseTexture(std::string id)
+{
+	mTextureArray.erase(id);
+}
+
 private:
+	
 static textureConfig* mpTexture;
 /* All textures will be stored in this map */
 std::map<std::string , SDL_Texture*>	mTextureArray;

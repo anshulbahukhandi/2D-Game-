@@ -5,14 +5,14 @@ using namespace std;
 
 
 /* Function to push a state to the vector*/
-void getstate::addOneDontRemoveOther(gamestate* pState )
+void getstate::addOneDontRemoveOther(gamestate* pState , SDL_Renderer* renderer )
 {
 	mArrayGameState.push_back(pState);
-	pState->enterState();
+	pState->enterState(renderer);
 }
 
 /*Function to change a state */
-void getstate::addOneRemoveOther(gamestate* pState)
+void getstate::addOneRemoveOther(gamestate* pState , SDL_Renderer* renderer)
 {
 	/*If array is not empty*/ 
 	if(!mArrayGameState.empty())
@@ -28,7 +28,7 @@ void getstate::addOneRemoveOther(gamestate* pState)
 	}
 		/*Once the last state has been deleted . push the new state*/
 		mArrayGameState.push_back(pState);
-		mArrayGameState.back()->enterState();
+		mArrayGameState.back()->enterState(renderer);
 }
 
 /*Function to just remove a state*/
@@ -59,11 +59,11 @@ void getstate::process()
 
 }
 
-void getstate::render()
+void getstate::render(SDL_Renderer* renderer)
 {
 	if(!mArrayGameState.empty())
 	{
-		mArrayGameState.back()->render();
+		mArrayGameState.back()->render(renderer);
 	}
 	else 
 		cout<<"No states in the vector  getstate::render()\n";

@@ -8,13 +8,13 @@ const std::string play::mId= "PLAY";
 
  }
 
- void play::render()
+ void play::render(SDL_Renderer* renderer)
  {
 
  }
 
 
- bool play::enterState()
+ bool play::enterState(SDL_Renderer* renderer)
  {
  	cout<<"Entering play state\n";
  }

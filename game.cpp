@@ -61,7 +61,7 @@ bool  game::init( char* title, int xpos, int ypos, int height, int width, bool f
 
 	/*Add our first state*/
 	mpStateChanger=new getstate();
-	mpStateChanger->addOneRemoveOther(new menu());
+	mpStateChanger->addOneRemoveOther(new menu() , mpRenderer);
 
 
 	mIfRunning=true;
@@ -80,7 +80,7 @@ void game::handleEvent()
 	 		}
 	 	else if (input::getInstance()->getKeyState(SDL_SCANCODE_RETURN))
 	 		{
-	 			mpStateChanger->addOneRemoveOther(new play());
+	 			mpStateChanger->addOneRemoveOther(new play() , mpRenderer);
 	 		}
 	 	else	
 	 		{
@@ -101,7 +101,7 @@ void game::render(int red, int blue , int green , int alpha)
 	SDL_RenderClear(mpRenderer);
 
 	/*Render the texture*/
-	mpStateChanger->render();
+	mpStateChanger->render(mpRenderer);
 	/* Display the renderer*/
 	SDL_RenderPresent(mpRenderer);
 }

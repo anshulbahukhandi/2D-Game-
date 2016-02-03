@@ -10,9 +10,9 @@ class play : public gamestate
 public:
 
 virtual void process();
-virtual void render();
+virtual void render(SDL_Renderer*);
 
-virtual bool enterState();
+virtual bool enterState(SDL_Renderer*);
 virtual bool exitState();
 
 virtual std::string getStateId();

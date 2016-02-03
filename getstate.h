@@ -5,15 +5,16 @@
 #include<string>
 #include"gamestate.h"
 #include<vector>
-
+#include"gamestate.h"
+#include"SDL.h"
 class getstate
 {
 
 public:	
 	void process();
-	void render();	
-	void addOneDontRemoveOther(gamestate* );
-	void addOneRemoveOther(gamestate* );
+	void render(SDL_Renderer*);	
+	void addOneDontRemoveOther(gamestate* , SDL_Renderer* );
+	void addOneRemoveOther(gamestate* , SDL_Renderer* );
 	void removeOne();
 private:
 	std::vector<gamestate* > mArrayGameState;
