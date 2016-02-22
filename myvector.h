@@ -1,6 +1,5 @@
-#ifndef MYVECTOR_H_
-#define MYVECTOR_H_
-
+#ifndef MY_VECTOR_H_
+#define MY_VECTOR_H_
 
 #include<cmath>
 
@@ -8,43 +7,24 @@ class myvector
 {
 
 public:
-myvector() {}
-myvector( float  , float );
-
-~myvector();
-
-const float getX()const ;
-
-const float getY()const ;
-
-void setX(const float) ;
-
-void setY(const float) ;
-
-float length();  
-
-/* Overloaded for easy addition of myvectors*/
-myvector operator+(const myvector&);
-
-/* Overloaded for easy subtraction of myvectors*/
-myvector operator-(const myvector&);
-
-/* Overloaded for easy division of myvectors*/
-myvector operator/(const float);
-
-/* Overloaded for scalar mutiplication of myvectors*/
-myvector operator*(const float );
-
-/*function to normalize a myvector*/
-void normalize()
-{
-	*this/(this->length());
-}
+	myvector();
+	myvector(const float , const float);
+	~myvector();
+	void setX(const float );
+	void setY(const float );
+	const float getX();
+	const float getY();
+	myvector operator+(const myvector&);
+	myvector operator*(const float );
+	myvector operator-(const myvector&);
+	myvector operator/(const float );
+	void normalize();
 
 private:
-
-float mX;
-float mY;
+	float mX; 
+	float mY; 
 
 };
+
+
 #endif

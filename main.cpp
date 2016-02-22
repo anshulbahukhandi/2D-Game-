@@ -1,31 +1,39 @@
-#include"game.cpp"
 #include<iostream>
-
+#include<cstring>
+#include"game.h"
+#include"SDL2/SDL.h"
 using namespace std; 
+const static int FPS=60;
+const int timePerFrame=1000/60;
 
-int main( int argc  , char* argv[])
+int main()
 {
+	Uint32 startTime , timeTaken;
 
-	const int FPS =60;
-	const int timeBetweenFrames=1000/FPS;
-	int frameStart , frameTime;
+	if(game::getInstance()->init("MAIN WINDOW" , 100 , 100 ,640,480,false) )
+		cout<<"Game initialization successfull!\n";
+	else 
+		return 0; 
 
-	if( game::getInstance()->init((char*)"Main Window" , 0 , 0 , 640 , 400 ,0))
+	while(game::getInstance()->running())
 	{
-		while(game::getInstance()->ifRunning())
+		startTime=SDL_GetTicks();
+		game::getInstance()->handleEvent();
+		game::getInstance()->render();
+		game::getInstance()->process();
+		timeTaken=SDL_GetTicks() - startTime;
+		if(timeTaken<timePerFrame)
 		{
-			frameStart=SDL_GetTicks();
-			
-			game::getInstance()->render(0,0,0,255);
-			game::getInstance()->process();
-			game::getInstance()->handleEvent();
-
-			frameTime=SDL_GetTicks() - frameStart;
-			if(frameTime<timeBetweenFrames)
-				SDL_Delay(timeBetweenFrames-frameTime);
-
-		}
+			SDL_Delay(timePerFrame - timeTaken);
+		} 
 	}
 
-return 0 ;
+	game::getInstance()->clean();
+	
+	return 0 ; 
+
 }
+
+
+
+

@@ -1,34 +1,38 @@
 #include"player.h"
-using namespace std;
+#include"inputhandler.h"
+using namespace std; 
 
 
-
-player::player(const parameter* para) :gameobject(para) {}
-
-player::~player() {}
-
-void player::draw(SDL_Renderer* renderer)
+player::player(parameter* para) : gameObject(para)
 {
-	gameobject::draw(renderer);
+
+
+}
+
+player::~player()
+{
+
+}
+
+void player::draw()
+{
+	gameObject::draw();
 }
 
 void player::process()
 {
-	if(input::getInstance()->getMouseButtonState(LEFT))
-		{
-			
-			mCurrentFrame=(int)((SDL_GetTicks()/100)%6);
-			myvector* temp = new myvector ; 
-			temp = input::getInstance()->getMousePosition();
-			mVelocity=(*temp-mPosition)/75;
-		}
-		else
-			mVelocity.setX(0);
-	gameobject::process();	
+	gameObject::process();
+	mCurrentRow=2;
+	if(inputHandler::getInstance()->getState(LEFT))
+	mpVelocity->setX(1);
+	else
+	mpVelocity->setX(0);
+	//mpVelocity->setY(-0.8);
 
 }
 
 void player::clean()
 {
-	gameobject::clean();
+
 }
+

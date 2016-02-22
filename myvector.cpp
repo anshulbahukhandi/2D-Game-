@@ -1,9 +1,16 @@
 #include"myvector.h"
-using namespace std;
+using namespace std; 
 
-
-myvector::myvector(float x , float y) : mX(x) , mY(y)
+myvector::myvector()
 {
+	mX=0;
+	mY=0;
+}
+
+myvector::myvector(const float x , const float y)
+{
+	mX=x;
+	mY=y;
 
 }
 
@@ -12,63 +19,65 @@ myvector::~myvector()
 
 }
 
-const float myvector::getX()const 
-{
-	return mX;
-}
-
-const float myvector::getY()const 
-{
-	return mY;
-}
-
-void myvector::setX(const float x) 
+void myvector::setX(const float x)
 {
 	mX=x;
 }
 
-void myvector::setY(const float y) 
+void myvector::setY(const float y)
 {
 	mY=y;
 }
 
-float myvector::length()
+const float myvector::getX()
 {
-	return (sqrt(mX*mX + mY*mY));
+	return mX; 
 }
 
-myvector myvector::operator+(const myvector& v)
+const float myvector::getY()
 {
-	myvector temp ; 
-	temp.mX= mX+v.mX;
-	temp.mY= mY+v.mY;
-
-	return temp; 	
+	return mY;
 }
 
-myvector myvector::operator-(const myvector& v)
+myvector myvector::operator+(const myvector& vec)
 {
-	myvector temp ; 
-	temp.mX= mX-v.mX;
-	temp.mY= mY-v.mY;
-
-	return temp; 	
+	myvector temp; 
+	temp.mX=mX+vec.mX;
+	temp.mY=mY+vec.mY;
+	return temp ;
 }
 
-myvector myvector::operator*(const float f)
+myvector myvector::operator*(const float s)
 {
-	myvector temp ; 
-	temp.mX=f*mX;
-	temp.mY=f*mY;
-	return (temp);
+	myvector temp; 
+	temp.mX=s*mX;
+	temp.mY=s*mY;
+	return temp ;
 }
 
-/* Overloaded for easy division of operators*/
-myvector myvector::operator/(const float f)
+myvector myvector::operator-(const myvector& vec)
 {
-	myvector temp ; 
-	temp.mX= mX/f;
-	temp.mY= mY/f;
-
-	return temp;
+	myvector temp; 
+	temp.mX=mX-vec.mX;
+	temp.mY=mY-vec.mY;
+	return temp ;
 }
+
+
+myvector myvector::operator/(const float s )
+{
+	myvector temp; 
+	temp.mX=mX/s;
+	temp.mY=mY/s;
+	return temp ;
+}
+
+void myvector::normalize()
+{
+	float temp = sqrt(mX*mX + mY*mY);
+	mX=mX/temp ; 
+	mY=mY/temp;
+}
+
+
+

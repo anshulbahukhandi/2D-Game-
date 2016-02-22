@@ -1,29 +1,22 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
-
-
-#include"SDL.h"
-#include"SDL_image.h"
-#include"parameter.h"
 #include"gameobject.h"
-#include"myvector.cpp"
-#include"input.h"
-#include<iostream>
+#include"parameter.h"
 
-class player : public gameobject
+class player : public gameObject
 {
 
 public:
-	
-player(const parameter*);
-virtual ~player();
-virtual void draw(SDL_Renderer*) ;
-virtual void process();
-virtual void clean() ;
+
+player(parameter* para);
+~player();
+void draw();
+void process();
+void clean();
 
 private:
- 
+
 
 };
 

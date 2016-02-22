@@ -1,19 +1,20 @@
 #ifndef ENEMY_H_
 #define ENEMY_H_
 
+#include"gameobject.h"
 #include"parameter.h"
-#include"myvector.h"
 
-class enemy : public gameobject
+class enemy : public gameObject
 {
-
 public:
 
-enemy(const parameter*);
-virtual ~enemy();
-virtual void draw(SDL_Renderer*) ;
-virtual void process();
-virtual void clean() ;
+enemy(parameter* );
+~enemy();
+void draw();
+void process();
+void clean();
+
+protected:
 
 };
 
