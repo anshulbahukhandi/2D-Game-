@@ -1,5 +1,7 @@
 #include"enemy.h"
 #include"game.h"
+#include"inputhandler.h"
+#include<SDL2/SDL.h>
 using namespace std;
 
 enemy::enemy(parameter* para) : gameObject(para)
@@ -19,7 +21,10 @@ void enemy::draw()
 
 void enemy::process()
 {
-	mpAcceleration->setX(-0.01);
+	if(inputHandler::getInstance()->isKeyPressed(SDL_SCANCODE_LEFT))
+		mpVelocity->setX(-1);
+	if(inputHandler::getInstance()->isKeyPressed(SDL_SCANCODE_RIGHT))
+		mpVelocity->setX(1);
 	mCurrentRow=1;
 	gameObject::process();
 }

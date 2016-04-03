@@ -1,5 +1,7 @@
 #include"player.h"
 #include"inputhandler.h"
+#include"myvector.h"
+#include<iostream>
 using namespace std; 
 
 
@@ -23,12 +25,17 @@ void player::process()
 {
 	gameObject::process();
 	mCurrentRow=2;
+
+	
+	myvector* mousePos=inputHandler::getInstance()->getMousePosition();
+
 	if(inputHandler::getInstance()->getState(LEFT))
-	mpVelocity->setX(1);
+	{
+		mpVelocity->setX((mousePos->getX()-mpPosition->getX())/100);
+		mpVelocity->setY((mousePos->getY()-mpPosition->getY())/100);
+	}
 	else
 	mpVelocity->setX(0);
-	//mpVelocity->setY(-0.8);
-
 }
 
 void player::clean()

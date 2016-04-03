@@ -1,6 +1,6 @@
 CC=g++
 FILE=main.cpp game.cpp texturepool.cpp parameter.cpp gameobject.cpp player.cpp enemy.cpp myvector.cpp inputhandler.cpp
-FLAGS= -w -lSDL2 -lSDL2_image
+FLAGS= -w -lSDL2 -lSDL2_image -std=c++11
 OUTPUT=a.out
 
 all:${OUTPUT}
