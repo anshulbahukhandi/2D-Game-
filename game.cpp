@@ -57,6 +57,10 @@ bool game::init(const string str , const int x , const int y , const int width ,
 
 	mGameObjects.push_back(mEnemy1);
 	mGameObjects.push_back(mPlayer1);
+
+	mpStateMachine=new statemachine();
+	mpStateMachine->pushstate(new menuState());
+
 	return true;
 }
 
@@ -72,6 +76,10 @@ void game::render()
 void game::handleEvent()
 {
 	inputHandler::getInstance()->process();
+	if(inputHandler::getInstance()->isKeyPressed(SDL_SCANCODE_RETURN))
+	{
+		mpStateMachine->changestate(new playState());
+	}
 }
 
 void game::process()

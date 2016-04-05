@@ -10,7 +10,9 @@
 #include"gameobject.h"
 #include"player.h"
 #include"enemy.h"
-
+#include"statemachine.h"
+#include"playstate.h"
+#include"menustate.h"
 class game
 {
 
@@ -48,6 +50,9 @@ SDL_Window* mpWindow;
 bool mRunning;
 SDL_Renderer* mpRenderer;
 std::vector<gameObject*> mGameObjects;
+
+statemachine* mpStateMachine;
+
 };
 
 #endif
