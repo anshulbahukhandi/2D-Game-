@@ -40,24 +40,6 @@ bool game::init(const string str , const int x , const int y , const int width ,
 		return 0 ;
 	}
 
-	//If everything is successfull program execution will come here
-	parameter* playerPara;
-	parameter* enemyPara;
-	if(texturePool::getInstance()->loadImage("images/horse.png" , "horse" , mpRenderer)
-		&& texturePool::getInstance()->loadImage("images/cat.bmp" , "cat" , mpRenderer) 
-	   )
-	{
-		 playerPara=new parameter("horse" , 0 , 100 , 320,225);
-		 enemyPara=new parameter ("cat" , 500 , 0 , 128,82);	
-	}
-	else return false; 
-	
-	gameObject* mPlayer1=new player(playerPara);
-	gameObject* mEnemy1=new enemy(enemyPara);
-
-	mGameObjects.push_back(mEnemy1);
-	mGameObjects.push_back(mPlayer1);
-
 	mpStateMachine=new statemachine();
 	mpStateMachine->pushstate(new menuState());
 
@@ -68,9 +50,15 @@ void game::render()
 {
 	SDL_SetRenderDrawColor(mpRenderer ,0,100, 200 , 0);
 	SDL_RenderClear(mpRenderer);
-	for(int i = 0 ; i<mGameObjects.size();i++)
-		mGameObjects[i]->draw();
+
+	mpStateMachine->draw();
+
 	SDL_RenderPresent(mpRenderer);
+}
+
+void game::process()
+{
+	mpStateMachine->process();
 }
 
 void game::handleEvent()
@@ -80,12 +68,6 @@ void game::handleEvent()
 	{
 		mpStateMachine->changestate(new playState());
 	}
-}
-
-void game::process()
-{
-	for(int i = 0 ; i<mGameObjects.size();i++)
-		mGameObjects[i]->process();
 }
 
 void game::clean()

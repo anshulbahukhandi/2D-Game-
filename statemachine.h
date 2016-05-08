@@ -11,6 +11,8 @@ public:
 	void changestate(state* );
 	void pushstate( state*  );
 	void popstate();
+	void process() ; 
+	void draw(); 
 private:
 
 std::vector<state*> maStates;

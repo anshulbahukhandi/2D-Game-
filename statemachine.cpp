@@ -1,7 +1,8 @@
 #include"statemachine.h"
-
+#include<iostream>
 void statemachine::changestate(state* newstate)
 {
+	std::cout<<"entering change state\n";
 	if(!maStates.empty())
 	{
 		if(maStates.back()->getStateId()==newstate->getStateId())
@@ -10,12 +11,13 @@ void statemachine::changestate(state* newstate)
 		}
 		if(maStates.back()->onexit())
 		{
-			delete maStates.back();
+			//delete maStates.back();
 			maStates.pop_back();
 		}
 	}
 	maStates.push_back(newstate);
 	maStates.back()->onenter();
+		std::cout<<"exiting change state\n";
 }
 
 void statemachine::pushstate( state* newstate )
@@ -35,3 +37,19 @@ void statemachine::popstate()
 		}
 	}	
 }
+
+void statemachine::process()
+{
+	if(!maStates.empty())
+		maStates.back()->process();
+}
+
+void statemachine::draw()
+{
+	if(!maStates.empty())
+		maStates.back()->draw();
+}
+
+
+
+

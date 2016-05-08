@@ -8,7 +8,7 @@ class state
 	
 public:
 	virtual void process()=0;
-	virtual void render()=0;
+	virtual void draw()=0;
 	virtual bool onenter()=0;
 	virtual bool onexit()=0;
 

@@ -38,6 +38,7 @@ static game* getInstance()
 		myGame=new game();
 	return myGame;
 }
+statemachine* getStateMachine() { return mpStateMachine; }
 
 private:
 
