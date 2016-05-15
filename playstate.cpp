@@ -5,11 +5,17 @@
 #include"game.h"
 #include"player.h"
 #include"enemy.h"
+#include"inputhandler.h"
+#include"pausestate.h"
 
 const std::string playState::mId="PLAY";
 
 void playState::process()
 {
+	if(inputHandler::getInstance()->isKeyPressed(SDL_SCANCODE_ESCAPE))
+	{
+		game::getInstance()->getStateMachine()->pushstate(new pauseState());
+	}
 	for( int i = 0 ; i<maGameObject.size() ; i++)
 		maGameObject[i]->process();
 }
