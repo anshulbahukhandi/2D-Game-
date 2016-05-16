@@ -30,8 +30,8 @@ bool menuState::onenter()
 	{
 		return false; 	
 	}
-	gameObject* playButton=new button(new parameter("play", 220,100 ,200 ,100 ) , mPlayFunction);
-	gameObject* exitButton=new button(new parameter("exit",220 ,300 ,200 ,100 ) , mExitFunction);
+	gameObject* playButton=new button(new parameter("play", 500,200 ,200 ,100 ) , mPlayFunction);
+	gameObject* exitButton=new button(new parameter("exit",500 ,400 ,200 ,100 ) , mExitFunction);
 
 	maGameObject.push_back(playButton);
 	maGameObject.push_back(exitButton);

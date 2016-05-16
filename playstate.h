@@ -13,6 +13,7 @@ void process();
 void draw();
 bool onenter();
 bool onexit();
+bool checkCollision(gameObject*  , gameObject* );
 const std::string getStateId() const;
 private:
 	static const std::string mId;

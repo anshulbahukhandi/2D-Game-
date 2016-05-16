@@ -26,8 +26,8 @@ bool pauseState::onenter()
 	{
 		return false; 	
 	}
-	gameObject* mainMenuButton=new button(new parameter("mainmenubutton", 220,100 ,180 ,100 ) , mMainButtonFunction);
-	gameObject* resumeButton=new button(new parameter("resumebutton",220 ,300 ,180 ,100 ) , mResumeButtonFunction);
+	gameObject* mainMenuButton=new button(new parameter("mainmenubutton", 500,300 ,170 ,100 ) , mMainButtonFunction);
+	gameObject* resumeButton=new button(new parameter("resumebutton",500 ,500 ,170 ,100 ) , mResumeButtonFunction);
 
 	maGameObject.push_back(mainMenuButton);
 	maGameObject.push_back(resumeButton);

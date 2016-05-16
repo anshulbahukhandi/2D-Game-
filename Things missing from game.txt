@@ -1,3 +1,2 @@
-texture clear  in onexit functions of every state.
+﻿texture clear  in onexit functions of every state.
 reset function in inputhandler class.It is used in the onexit function of pause state.
-game over state 

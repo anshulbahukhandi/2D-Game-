@@ -41,3 +41,18 @@ void gameObject::clean()
 
 }
 
+int gameObject::getWidth()
+{
+	return mWidth;
+}  
+
+int gameObject::getHeight() 
+{
+	return mHeight;
+} 
+
+myvector* gameObject::getPosition() 
+{
+	return mpPosition;
+} 
+

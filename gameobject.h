@@ -15,6 +15,9 @@ public:
 virtual void draw();									
 virtual void process();
 virtual void clean();
+int getWidth() ; 
+int getHeight() ; 
+myvector* getPosition() ; 
 
 protected:
 	gameObject(parameter* para);

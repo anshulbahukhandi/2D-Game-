@@ -16,15 +16,19 @@ enemy::~enemy()
 
 void enemy::draw()
 {
+	if(mpVelocity->getX()>0)
+	texturePool::getInstance()->drawAnimated(mId ,game::getInstance()->getRenderer(), mpPosition->getX() , mpPosition->getY() , mWidth  ,mHeight , mCurrentRow , mCurrentFrame);
+	if(mpVelocity->getX()<0)
 	texturePool::getInstance()->drawAnimated(mId ,game::getInstance()->getRenderer(), mpPosition->getX() , mpPosition->getY() , mWidth  ,mHeight , mCurrentRow , mCurrentFrame,SDL_FLIP_HORIZONTAL);
 }
 
 void enemy::process()
 {
-	if(inputHandler::getInstance()->isKeyPressed(SDL_SCANCODE_LEFT))
-		mpVelocity->setX(-1);
-	if(inputHandler::getInstance()->isKeyPressed(SDL_SCANCODE_RIGHT))
+
+	if(mpPosition->getX()==0)
 		mpVelocity->setX(1);
+	if(mpPosition->getX()==1280)
+		mpVelocity->setX(-1);
 	mCurrentRow=1;
 	gameObject::process();
 }

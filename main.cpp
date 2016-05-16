@@ -10,7 +10,7 @@ int main()
 {
 	Uint32 startTime , timeTaken;
 
-	if(game::getInstance()->init("MAIN WINDOW" , 100 , 100 ,640,480,false) )
+	if(game::getInstance()->init("Anshul's Game" , 10 , 10 ,1280,1024,false) )
 		cout<<"Game initialization successfull!\n";
 	else 
 		return 0; 
