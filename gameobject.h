@@ -15,12 +15,13 @@ public:
 virtual void draw();									
 virtual void process();
 virtual void clean();
+virtual void load(parameter*);
 int getWidth() ; 
 int getHeight() ; 
 myvector* getPosition() ; 
 
 protected:
-	gameObject(parameter* para);
+	gameObject();
 	virtual ~gameObject();
 	std:: string mId; 
 
@@ -32,6 +33,10 @@ protected:
 
 	int mCurrentFrame ; 
 	int mCurrentRow;
+	
+	int mCallBackId;
+	int mAnimationSpeed;
+	int mNumFrames;
 
 };
 

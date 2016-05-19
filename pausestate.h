@@ -1,11 +1,11 @@
 #ifndef PAUSE_STATE_H_
 #define PAUSE_STATE_H_
 
-#include"state.h"
+#include"menustate.h"
 #include"gameobject.h"
 #include<vector>
 
-class pauseState : public state
+class pauseState : public menuState
 {
 
 public:
@@ -23,6 +23,7 @@ private:
 	static void mMainButtonFunction() ; 
 	static void mResumeButtonFunction(); 
 
+	virtual void setCallBacks(const std::vector<callBack>& callbacks);
 };
 
 #endif

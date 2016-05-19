@@ -1,11 +1,11 @@
 #ifndef GAME_OVER_STATE_H_
 #define GAME_OVER_STATE_H_
 
-#include"state.h"
+#include"menustate.h"
 #include"gameobject.h"
 #include<vector>
 
-class gameoverState : public state
+class gameoverState : public menuState
 {
 public:
 	void process();
@@ -19,5 +19,6 @@ private:
 	static void mRestartFunction();
 	static void mMainmenuFunction();
 
+	virtual void setCallBacks(const std::vector<callBack>& callbacks);
 } ;
 #endif

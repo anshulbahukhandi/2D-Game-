@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<STATES>
+	<MAINMENU>
+		<TEXTURES>
+			<texture filename="images/play.png" ID="playbutton"/>
+			<texture filename="images/exit.png" ID="exitbutton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="button" x="500" y="200" width="200" height="100" textureID="playbutton" numFrames="1"	callbackID="1" animationSpeed="1"/>
+			<object type="button" x="500" y="400" width="200" height="100" textureID="exitbutton" numFrames="1"
+			callbackID="2" animationSpeed="1"/>
+		</OBJECTS>
+	</MAINMENU>
+
+	<PLAY>
+		<TEXTURES>
+			<texture filename="images/player.png" ID="player"/>
+			<texture filename="images/enemy.png" ID="enemy"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="player" x="0" y="200" width="320" height="225" textureID="player" numFrames="1"/>
+			<object type="enemy"  x="1280" y="200" width="253.333" height="265" textureID="enemy" numFrames="1"/>
+		</OBJECTS>
+	</PLAY>
+
+	<PAUSE>
+		<TEXTURES>
+			<texture filename="images/mainmenu.png" ID="mainmenubutton"/>
+			<texture filename="images/resume.png" ID="resumebutton"/>
+		</TEXTURES>
+
+		<OBJECTS>
+			<object type="button" x="500" y="300" width="170" height="100" textureID="mainmenubutton" numFrames="1"	callbackID="2" animationSpeed="1"/>
+			<object type="button" x="500" y="500" width="170" height="100" textureID="resumebutton" numFrames="1"
+			callbackID="1" animationSpeed="1"/>
+		</OBJECTS>
+	</PAUSE>
+
+	<GAMEOVER>
+		<TEXTURES>
+			<texture filename="images/restart.png" ID="restart"/>
+			<texture filename="images/mainmenu.png" ID="mainmenu"/>
+			<texture filename="images/gameover.png" ID="gameover"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="button" x="500" y="400" width="185" height="100" textureID="restart" numFrames="0"	callbackID="1" animationSpeed="1"/>
+			<object type="button" x="507" y="250" width="170" height="100" textureID="mainmenu" numFrames="0"	callbackID="2" animationSpeed="1"/>
+			<object type="animatedGraphics" x="500" y="100" width="260" height="100" textureID="gameover" numFrames="2"/>
+		</OBJECTS>
+	</GAMEOVER>
+
+</STATES>

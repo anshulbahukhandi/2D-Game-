@@ -1,6 +1,8 @@
 #include"game.h"
 #include"inputhandler.h"
-
+#include"gameobjectfactory.h"
+#include"button.h"
+#include"animatedgraphics.h"
 using namespace std; 
 
 game* game::myGame=NULL;
@@ -41,7 +43,13 @@ bool game::init(const string str , const int x , const int y , const int width ,
 	}
 
 	mpStateMachine=new statemachine();
-	mpStateMachine->pushstate(new menuState());
+
+	gameObjectFactory::getInstance()->registerType("button" , new buttonCreator());
+	gameObjectFactory::getInstance()->registerType("player" , new playerCreator());
+	gameObjectFactory::getInstance()->registerType("enemy" , new enemyCreator());
+	gameObjectFactory::getInstance()->registerType("animatedGraphics" , new animatedGraphicsCreator());
+
+	mpStateMachine->pushstate(new mainMenuState());
 
 	return true;
 }

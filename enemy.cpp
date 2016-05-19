@@ -4,7 +4,7 @@
 #include<SDL2/SDL.h>
 using namespace std;
 
-enemy::enemy(parameter* para) : gameObject(para)
+enemy::enemy()
 {
 	
 }
@@ -36,4 +36,9 @@ void enemy::process()
 void enemy::clean()
 {
 
+}
+
+void enemy::load(parameter* para)
+{
+	gameObject::load(para);
 }

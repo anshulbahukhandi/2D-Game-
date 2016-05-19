@@ -2,7 +2,7 @@
 #define STATE_H_
 
 #include<string>
-
+#include<vector>
 class state
 {
 	
@@ -13,6 +13,8 @@ public:
 	virtual bool onexit()=0;
 
 	virtual const std::string getStateId() const =0;
+protected:
+std::vector<std::string> maTextureId;
 
 };
 #endif

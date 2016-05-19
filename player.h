@@ -3,21 +3,31 @@
 
 #include"gameobject.h"
 #include"parameter.h"
+#include"gameobjectfactory.h"
+
 
 class player : public gameObject
 {
 
 public:
 
-player(parameter* para);
+player();
 ~player();
 void draw();
 void process();
 void clean();
-
+void load (parameter* para);
 private:
 
 
+};
+
+class playerCreator :public baseCreator
+{
+	gameObject* createGameObject() const 
+	{
+		return new player();
+	}
 };
 
 #endif

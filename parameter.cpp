@@ -1,7 +1,7 @@
 #include"parameter.h"
 using namespace std; 
 
-parameter::parameter(const std::string id , int x, int y, int width, int height)
+parameter::parameter(const std::string id , int x, int y, int width, int height , int frames , int callback , int speed)
 {
 	mId=id; 
     mX=x; 
@@ -9,7 +9,9 @@ parameter::parameter(const std::string id , int x, int y, int width, int height)
 
     mWidth=width; 
     mHeight =height;  
-    
+    mNumFrames=frames; 
+    mCallBackId=callback;
+    mAnimationSpeed=speed;
 }
 
 parameter::~parameter()

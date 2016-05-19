@@ -1,9 +1,8 @@
 #include"animatedgraphics.h"
 
-animatedGraphics::animatedGraphics(parameter* para , int speed , int frames) : gameObject(para)
+animatedGraphics::animatedGraphics()
 {
-	mAnimationSpeed=speed;
-	mNumberFrames=frames;
+
 }
 
 animatedGraphics::~animatedGraphics()
@@ -18,7 +17,7 @@ void animatedGraphics::draw()
 
 void animatedGraphics::process()
 {
-	mCurrentFrame = int(((SDL_GetTicks() / (1000 / mAnimationSpeed)) % mNumberFrames));	
+	mCurrentFrame = int(((SDL_GetTicks() / (1000 / mAnimationSpeed)) % mNumFrames));	
 }
 
 void animatedGraphics::clean()
@@ -26,3 +25,7 @@ void animatedGraphics::clean()
 
 }
 
+void animatedGraphics::load(parameter* para)
+{
+	gameObject::load(para);
+}

@@ -8,7 +8,7 @@
 #include"inputhandler.h"
 #include"pausestate.h"
 #include"gameoverstate.h"
-
+#include"stateparser.h"
 const std::string playState::mId="PLAY";
 
 void playState::process()
@@ -33,24 +33,10 @@ void playState::draw()
 
 bool playState::onenter()
 {
-
-	if(!texturePool::getInstance()->loadImage("images/player.png" , "player" , game::getInstance()->getRenderer())
-	   || !texturePool::getInstance()->loadImage("images/enemy.png" , "enemy" , game::getInstance()->getRenderer())
-	   )
-	   
-	{
-		return false; 
-	}
-	parameter* playerPara=new parameter("player" , 0 , 200 , 320,225);
-	parameter* enemyPara=new parameter ("enemy" , 1280 , 200 , 760/3,265);
-
-	gameObject* mPlayer1=new player(playerPara);
-	gameObject* mEnemy1=new enemy(enemyPara);
-
-
-	maGameObject.push_back(mPlayer1);
-	maGameObject.push_back(mEnemy1);
-	return true;
+	std::cout<<"Entering Play state!\n";
+	stateParser* stateparser; 
+	stateparser->parseState("states.xml",mId,&maGameObject , &maTextureId);
+	return true; 
 }
 
 bool playState::onexit()

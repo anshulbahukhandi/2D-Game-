@@ -2,7 +2,6 @@
 #include<iostream>
 void statemachine::changestate(state* newstate)
 {
-	std::cout<<"entering change state\n";
 	if(!maStates.empty())
 	{
 		if(maStates.back()->getStateId()==newstate->getStateId())
@@ -17,7 +16,6 @@ void statemachine::changestate(state* newstate)
 	}
 	maStates.push_back(newstate);
 	maStates.back()->onenter();
-		std::cout<<"exiting change state\n";
 }
 
 void statemachine::pushstate( state* newstate )

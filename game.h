@@ -12,7 +12,7 @@
 #include"enemy.h"
 #include"statemachine.h"
 #include"playstate.h"
-#include"menustate.h"
+#include"mainmenustate.h"
 class game
 {
 

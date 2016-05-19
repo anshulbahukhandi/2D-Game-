@@ -2,18 +2,9 @@
 #include"game.h"
 using namespace std; 
 
-gameObject::gameObject(parameter* para)
+gameObject::gameObject()
 {
-	mpPosition=new myvector( para->getX() , para->getY());
-	mpVelocity=new myvector(); //default  velocity is zero
-	mpAcceleration=new myvector(); //default acceleration is zero
-
-	mId = para->getId();  
-	mWidth = para->getWidth(); 
-	mHeight  = para->getHeight();
-
-	mCurrentRow = 1;
-	mCurrentFrame  = 1;
+	
 }
 
 gameObject::~gameObject()
@@ -41,6 +32,22 @@ void gameObject::clean()
 
 }
 
+void gameObject::load(parameter* para)
+{
+	mpPosition=new myvector( para->getX() , para->getY());
+	mpVelocity=new myvector(); //default  velocity is zero
+	mpAcceleration=new myvector(); //default acceleration is zero
+
+	mId = para->getId();  
+	mWidth = para->getWidth(); 
+	mHeight  = para->getHeight();
+
+	mCurrentRow = 1;
+	mCurrentFrame  = 1;
+	mNumFrames=para->getFrames();
+	mAnimationSpeed=para->getAnimationSpeed();
+	mCallBackId=para->getCallBackId();
+}
 int gameObject::getWidth()
 {
 	return mWidth;

@@ -3,17 +3,27 @@
 
 #include"gameobject.h"
 #include"parameter.h"
+#include"gameobjectfactory.h"
+
+
 class animatedGraphics : public gameObject
 {
 
 public:
-animatedGraphics(parameter* para , int , int);
+animatedGraphics();
 ~animatedGraphics();
 void draw();									
 void process();
 void clean();
+void load(parameter* para);
 private:
-	int mAnimationSpeed;
-	int mNumberFrames;
+};
+
+class animatedGraphicsCreator :public baseCreator
+{
+	gameObject* createGameObject() const 
+	{
+		return new animatedGraphics();
+	}
 };
 #endif

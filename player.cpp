@@ -5,7 +5,7 @@
 using namespace std; 
 
 
-player::player(parameter* para) : gameObject(para)
+player::player()
 {
 
 
@@ -43,3 +43,7 @@ void player::clean()
 
 }
 
+void player::load(parameter* para)
+{
+	gameObject::load(para);
+}

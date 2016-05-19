@@ -4,7 +4,7 @@
 
 using namespace std; 
 
-button::button(parameter* para , void(*function)() ) : gameObject(para) , mFunction(function)
+button::button()
 {
 	mCurrentFrame=MOUSE_OUT;
 	mButtonReleased=true;
@@ -45,4 +45,9 @@ void button::process()
 void button::clean()
 {
 	gameObject::clean();
+}
+
+void button::load(parameter* para)
+{
+	gameObject::load(para);
 }

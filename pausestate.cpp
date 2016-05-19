@@ -1,7 +1,7 @@
 #include"pausestate.h"
 #include"button.h"
 #include"game.h"
-
+#include"stateparser.h"
 const std::string pauseState::mId="PAUSE";
 
 void pauseState::process()
@@ -19,18 +19,13 @@ void pauseState::draw()
 bool pauseState::onenter()
 {
 	std::cout<<"Entering PAUSE state!\n";
-	//Creating the objects associated with menu state upon entrance
-	if(!texturePool::getInstance()->loadImage("images/mainmenu.png" , "mainmenubutton" , game::getInstance()->getRenderer())
-		|| !texturePool::getInstance()->loadImage("images/resume.png" , "resumebutton" , game::getInstance()->getRenderer()) 
-	   )
-	{
-		return false; 	
-	}
-	gameObject* mainMenuButton=new button(new parameter("mainmenubutton", 500,300 ,170 ,100 ) , mMainButtonFunction);
-	gameObject* resumeButton=new button(new parameter("resumebutton",500 ,500 ,170 ,100 ) , mResumeButtonFunction);
+	stateParser stateparser;
+	stateparser.parseState("states.xml" , mId , &maGameObject , &maTextureId);
+	maCallBack.push_back(0);
+	maCallBack.push_back(mResumeButtonFunction);
+	maCallBack.push_back(mMainButtonFunction);
 
-	maGameObject.push_back(mainMenuButton);
-	maGameObject.push_back(resumeButton);
+	setCallBacks(maCallBack);
 
 	return true;
 }
@@ -45,7 +40,7 @@ for( int i = 0 ; i<maGameObject.size() ; i++)
 
 void pauseState::mMainButtonFunction()
 {
-	game::getInstance()->getStateMachine()->changestate(new menuState());
+	game::getInstance()->getStateMachine()->changestate(new mainMenuState());
 }
 
 void pauseState::mResumeButtonFunction()
@@ -54,4 +49,15 @@ void pauseState::mResumeButtonFunction()
 }
 
 
+void pauseState::setCallBacks(const std::vector<callBack>& callbacks)
+{
+	for( int i = 0 ; i<maGameObject.size() ; i++)
+	{
+		if(dynamic_cast<button*>(maGameObject[i]))
+		{
+			button* pbutton = dynamic_cast<button*>(maGameObject[i]);
+			pbutton->setCallBack(callbacks[pbutton->getCallBack()]);
+		}
+	}
 
+}
